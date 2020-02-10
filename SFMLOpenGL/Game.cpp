@@ -77,10 +77,10 @@ GLuint	index,		//Index to draw
 		textureID,	//Texture ID
 		texelID;	// Texel ID
 
-//const string filename = "texture.tga";
-//const string filename = "cube.tga";
+//const std::string filename = "texture.tga";
+const std::string filename = "cube.tga";
 
-const std::string filename = "texture.tga";
+//const std::string filename = "texture.tga";
 
 int width; //width of texture
 int height; //height of texture
@@ -197,14 +197,31 @@ void Game::initialize()
 	/// <summary>
 	/// vertices texture coords
 	/// </summary>
-	vertex[0].texel[0] = 0.0f;
-	vertex[0].texel[1] = 0.0f;
+	vertex[0].texel[0] = 0.25f;
+	vertex[0].texel[1] = 0.25f;
 
-	vertex[1].texel[0] = 1.0f;
-	vertex[1].texel[1] = 0.0f;
+	vertex[1].texel[0] = 0.5f;
+	vertex[1].texel[1] = 0.25f;
 
-	vertex[2].texel[0] = 1.0f;
-	vertex[2].texel[1] = 1.0f;
+	vertex[2].texel[0] = 0.5f;
+	vertex[2].texel[1] = 0.5f;
+
+	vertex[3].texel[0] = 1.0f;
+	vertex[3].texel[1] = 0.25f;
+
+	vertex[4].texel[0] = 1.0f;
+	vertex[4].texel[1] = 0.25f;
+
+	vertex[5].texel[0] = 0.75f;
+	vertex[5].texel[1] = 0.25f;
+
+	vertex[6].texel[0] = 0.75f;
+	vertex[6].texel[1] = 0.5f;
+
+	vertex[7].texel[0] = 1.0f;
+	vertex[7].texel[1] = 0.5f;
+
+	
 
 	/// <summary>
 	/// Index of Poly / Triangle to Draw
