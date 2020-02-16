@@ -61,7 +61,7 @@ typedef struct
 	float texel[2];
 } Vertex;
 
-Vertex vertex[8];
+Vertex vertex[24];
 GLubyte triangles[36];
 
 /* Variable to hold the VBO identifier and shader data */
@@ -116,6 +116,9 @@ void Game::initialize()
 	/// <summary>
 	/// Vertices counter-clockwise winding
 	/// </summary>
+	/// 
+	
+	// front
 	vertex[0].coordinate[0] = vertices[0];
 	vertex[0].coordinate[1] = vertices[1];
 	vertex[0].coordinate[2] = vertices[2];
@@ -132,23 +135,92 @@ void Game::initialize()
 	vertex[3].coordinate[1] = vertices[10];
 	vertex[3].coordinate[2] = vertices[11];
 
+	// top
 	vertex[4].coordinate[0] = vertices[12];
 	vertex[4].coordinate[1] = vertices[13];
 	vertex[4].coordinate[2] = vertices[14];
 
-	vertex[5].coordinate[0] = vertices[15];
-	vertex[5].coordinate[1] = vertices[16];
-	vertex[5].coordinate[2] = vertices[17];
+	vertex[5].coordinate[0] = vertices[0];
+	vertex[5].coordinate[1] = vertices[1];
+	vertex[5].coordinate[2] = vertices[2];
 
-
-	vertex[6].coordinate[0] = vertices[18];
-	vertex[6].coordinate[1] = vertices[19];
-	vertex[6].coordinate[2] = vertices[20];
+	vertex[6].coordinate[0] = vertices[9];
+	vertex[6].coordinate[1] = vertices[10];
+	vertex[6].coordinate[2] = vertices[11];
 
 	vertex[7].coordinate[0] = vertices[21];
 	vertex[7].coordinate[1] = vertices[22];
 	vertex[7].coordinate[2] = vertices[23];
 
+
+	// back
+	vertex[8].coordinate[0] = vertices[12];
+	vertex[8].coordinate[1] = vertices[13];
+	vertex[8].coordinate[2] = vertices[14];
+
+	vertex[9].coordinate[0] = vertices[15];
+	vertex[9].coordinate[1] = vertices[16];
+	vertex[9].coordinate[2] = vertices[17];
+
+	vertex[10].coordinate[0] = vertices[18];
+	vertex[10].coordinate[1] = vertices[19];
+	vertex[10].coordinate[2] = vertices[20];
+
+	vertex[11].coordinate[0] = vertices[21];
+	vertex[11].coordinate[1] = vertices[22];
+	vertex[11].coordinate[2] = vertices[23];
+
+
+	// bottom
+	vertex[12].coordinate[0] = vertices[15];
+	vertex[12].coordinate[1] = vertices[16];
+	vertex[12].coordinate[2] = vertices[17];
+
+	vertex[13].coordinate[0] = vertices[3];
+	vertex[13].coordinate[1] = vertices[4];
+	vertex[13].coordinate[2] = vertices[5];
+
+	vertex[14].coordinate[0] = vertices[6];
+	vertex[14].coordinate[1] = vertices[7];
+	vertex[14].coordinate[2] = vertices[8];
+
+	vertex[15].coordinate[0] = vertices[18];
+	vertex[15].coordinate[1] = vertices[19];
+	vertex[15].coordinate[2] = vertices[20];
+
+	// right
+	vertex[16].coordinate[0] = vertices[9];
+	vertex[16].coordinate[1] = vertices[10];
+	vertex[16].coordinate[2] = vertices[11];
+
+	vertex[17].coordinate[0] = vertices[6];
+	vertex[17].coordinate[1] = vertices[7];
+	vertex[17].coordinate[2] = vertices[8];
+
+	vertex[18].coordinate[0] = vertices[18];
+	vertex[18].coordinate[1] = vertices[19];
+	vertex[18].coordinate[2] = vertices[20];
+
+	vertex[19].coordinate[0] = vertices[21];
+	vertex[19].coordinate[1] = vertices[22];
+	vertex[19].coordinate[2] = vertices[23];
+
+	// left
+	vertex[20].coordinate[0] = vertices[12];
+	vertex[20].coordinate[1] = vertices[13];
+	vertex[20].coordinate[2] = vertices[14];
+
+	vertex[21].coordinate[0] = vertices[15];
+	vertex[21].coordinate[1] = vertices[16];
+	vertex[21].coordinate[2] = vertices[17];
+
+	vertex[22].coordinate[0] = vertices[3];
+	vertex[22].coordinate[1] = vertices[4];
+	vertex[22].coordinate[2] = vertices[5];
+
+	vertex[23].coordinate[0] = vertices[0];
+	vertex[23].coordinate[1] = vertices[1];
+	vertex[23].coordinate[2] = vertices[2];
 
 	/// <summary>
 	/// Vertices colors
