@@ -119,24 +119,24 @@ void Game::initialize()
 	/// 
 	
 	// front
-	vertex[0].coordinate[0] = vertices[0];
-	vertex[0].coordinate[1] = vertices[1];
-	vertex[0].coordinate[2] = vertices[2];
+	vertex[0].coordinate[0] = -1.0f;
+	vertex[0].coordinate[1] = 0.0f;
+	vertex[0].coordinate[2] = 1.0f;
 
-	vertex[1].coordinate[0] = vertices[3];
-	vertex[1].coordinate[1] = vertices[4];
-	vertex[1].coordinate[2] = vertices[5];
+	vertex[1].coordinate[0] = -1.0f;
+	vertex[1].coordinate[1] = -1.0f;
+	vertex[1].coordinate[2] = 1.0f;
 
-	vertex[2].coordinate[0] = vertices[6];
-	vertex[2].coordinate[1] = vertices[7];
-	vertex[2].coordinate[2] = vertices[8];
+	vertex[2].coordinate[0] = 1.0f;
+	vertex[2].coordinate[1] = -1.0f;
+	vertex[2].coordinate[2] = 1.0f;
 
-	vertex[3].coordinate[0] = vertices[9];
-	vertex[3].coordinate[1] = vertices[10];
-	vertex[3].coordinate[2] = vertices[11];
+	vertex[3].coordinate[0] = 1.0f;
+	vertex[3].coordinate[1] = 1.0f;
+	vertex[3].coordinate[2] = 1.0f;
 
 	// top
-	vertex[4].coordinate[0] = vertices[12];
+	/*vertex[4].coordinate[0] = vertices[12];
 	vertex[4].coordinate[1] = vertices[13];
 	vertex[4].coordinate[2] = vertices[14];
 
@@ -150,11 +150,11 @@ void Game::initialize()
 
 	vertex[7].coordinate[0] = vertices[21];
 	vertex[7].coordinate[1] = vertices[22];
-	vertex[7].coordinate[2] = vertices[23];
+	vertex[7].coordinate[2] = vertices[23];*/
 
 
 	// back
-	vertex[8].coordinate[0] = vertices[12];
+	/*vertex[8].coordinate[0] = vertices[12];
 	vertex[8].coordinate[1] = vertices[13];
 	vertex[8].coordinate[2] = vertices[14];
 
@@ -168,11 +168,11 @@ void Game::initialize()
 
 	vertex[11].coordinate[0] = vertices[21];
 	vertex[11].coordinate[1] = vertices[22];
-	vertex[11].coordinate[2] = vertices[23];
+	vertex[11].coordinate[2] = vertices[23];*/
 
 
 	// bottom
-	vertex[12].coordinate[0] = vertices[15];
+	/*vertex[12].coordinate[0] = vertices[15];
 	vertex[12].coordinate[1] = vertices[16];
 	vertex[12].coordinate[2] = vertices[17];
 
@@ -186,10 +186,10 @@ void Game::initialize()
 
 	vertex[15].coordinate[0] = vertices[18];
 	vertex[15].coordinate[1] = vertices[19];
-	vertex[15].coordinate[2] = vertices[20];
+	vertex[15].coordinate[2] = vertices[20];*/
 
 	// right
-	vertex[16].coordinate[0] = vertices[9];
+	/*vertex[16].coordinate[0] = vertices[9];
 	vertex[16].coordinate[1] = vertices[10];
 	vertex[16].coordinate[2] = vertices[11];
 
@@ -203,10 +203,10 @@ void Game::initialize()
 
 	vertex[19].coordinate[0] = vertices[21];
 	vertex[19].coordinate[1] = vertices[22];
-	vertex[19].coordinate[2] = vertices[23];
+	vertex[19].coordinate[2] = vertices[23];*/
 
 	// left
-	vertex[20].coordinate[0] = vertices[12];
+	/*vertex[20].coordinate[0] = vertices[12];
 	vertex[20].coordinate[1] = vertices[13];
 	vertex[20].coordinate[2] = vertices[14];
 
@@ -220,7 +220,7 @@ void Game::initialize()
 
 	vertex[23].coordinate[0] = vertices[0];
 	vertex[23].coordinate[1] = vertices[1];
-	vertex[23].coordinate[2] = vertices[2];
+	vertex[23].coordinate[2] = vertices[2];*/
 
 	/// <summary>
 	/// Vertices colors
@@ -270,28 +270,28 @@ void Game::initialize()
 	/// vertices texture coords
 	/// </summary>
 	vertex[0].texel[0] = 0.25f;
-	vertex[0].texel[1] = 0.25f;
+	vertex[0].texel[1] = 0.5f;
 
-	vertex[1].texel[0] = 0.5f;
+	vertex[1].texel[0] = 0.25f;
 	vertex[1].texel[1] = 0.25f;
 
-	vertex[2].texel[0] = 0.5f;
+	vertex[2].texel[0] = 0.25f;
 	vertex[2].texel[1] = 0.5f;
 
-	vertex[3].texel[0] = 1.0f;
-	vertex[3].texel[1] = 0.25f;
+	vertex[3].texel[0] = 0.0f;
+	vertex[3].texel[1] = 0.5f;
 
-	vertex[4].texel[0] = 1.0f;
-	vertex[4].texel[1] = 0.25f;
+	vertex[4].texel[0] = 0.25f;
+	vertex[4].texel[1] = 0.5f;
 
-	vertex[5].texel[0] = 0.75f;
-	vertex[5].texel[1] = 0.25f;
+	vertex[5].texel[0] = 0.5f;
+	vertex[5].texel[1] = 0.5f;
 
 	vertex[6].texel[0] = 0.75f;
 	vertex[6].texel[1] = 0.5f;
 
-	vertex[7].texel[0] = 1.0f;
-	vertex[7].texel[1] = 0.5f;
+	vertex[7].texel[0] = 0.25f;
+	vertex[7].texel[1] = 0.25f;
 
 	
 
@@ -318,7 +318,7 @@ void Game::initialize()
 	glBindBuffer(GL_ARRAY_BUFFER, vbo[0]);
 
 	/* Upload vertex data to GPU */
-	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 8, vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(Vertex) * 24, vertex, GL_STATIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
 
 	glGenBuffers(1, &index);
