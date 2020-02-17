@@ -136,6 +136,24 @@ void Game::initialize()
 	vertex[3].coordinate[2] = 1.0f;
 
 	// top
+	vertex[4].coordinate[0] = -1.0f;
+	vertex[4].coordinate[1] = 1.0f;
+	vertex[4].coordinate[2] = -1.0f;
+
+	vertex[5].coordinate[0] = -1.0f;
+	vertex[5].coordinate[1] = 1.0f;
+	vertex[5].coordinate[2] = 1.0f;
+
+	vertex[6].coordinate[0] = 1.0f;
+	vertex[6].coordinate[1] = 1.0f;
+	vertex[6].coordinate[2] = 1.0f;
+
+	vertex[7].coordinate[0] = 1.0f;
+	vertex[7].coordinate[1] = 1.0f;
+	vertex[7].coordinate[2] = -1.0f;
+
+
+
 	/*vertex[4].coordinate[0] = vertices[12];
 	vertex[4].coordinate[1] = vertices[13];
 	vertex[4].coordinate[2] = vertices[14];
@@ -154,6 +172,23 @@ void Game::initialize()
 
 
 	// back
+	vertex[8].coordinate[0] = 1.0f;
+	vertex[8].coordinate[1] = 1.0f;
+	vertex[8].coordinate[2] = -1.0f;
+
+	vertex[9].coordinate[0] = 1.0f;
+	vertex[9].coordinate[1] = -1.0f;
+	vertex[9].coordinate[2] = -1.0f;
+
+	vertex[10].coordinate[0] = -1.0f;
+	vertex[10].coordinate[1] = -1.0f;
+	vertex[10].coordinate[2] = -1.0f;
+
+	vertex[11].coordinate[0] = -1.0f;
+	vertex[11].coordinate[1] = 1.0f;
+	vertex[11].coordinate[2] = -1.0f;
+
+
 	/*vertex[8].coordinate[0] = vertices[12];
 	vertex[8].coordinate[1] = vertices[13];
 	vertex[8].coordinate[2] = vertices[14];
@@ -172,6 +207,23 @@ void Game::initialize()
 
 
 	// bottom
+	vertex[12].coordinate[0] = -1.0f;
+	vertex[12].coordinate[1] = -1.0f;
+	vertex[12].coordinate[2] = 1.0f;
+
+	vertex[13].coordinate[0] = -1.0f;
+	vertex[13].coordinate[1] = -1.0f;
+	vertex[14].coordinate[2] = -1.0f;
+
+	vertex[15].coordinate[0] = 1.0f;
+	vertex[15].coordinate[1] = -1.0f;
+	vertex[15].coordinate[2] = -1.0f;
+
+	vertex[16].coordinate[0] = 1.0f;
+	vertex[16].coordinate[1] = -1.0f;
+	vertex[16].coordinate[2] = 1.0f;
+
+
 	/*vertex[12].coordinate[0] = vertices[15];
 	vertex[12].coordinate[1] = vertices[16];
 	vertex[12].coordinate[2] = vertices[17];
@@ -444,6 +496,8 @@ void Game::initialize()
 	colorID = glGetAttribLocation(progID, "sv_color");
 	texelID = glGetAttribLocation(progID, "sv_texel");
 	textureID = glGetUniformLocation(progID, "f_texture");
+
+	
 }
 
 void Game::update()
@@ -460,7 +514,7 @@ void Game::update()
 	{
 		window.close();
 	}
-	
+
 	controlCube();
 
 #if (DEBUG >= 2)
