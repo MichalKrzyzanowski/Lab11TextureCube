@@ -213,15 +213,15 @@ void Game::initialize()
 
 	vertex[13].coordinate[0] = -1.0f;
 	vertex[13].coordinate[1] = -1.0f;
+	vertex[13].coordinate[2] = -1.0f;
+
+	vertex[14].coordinate[0] = 1.0f;
+	vertex[14].coordinate[1] = -1.0f;
 	vertex[14].coordinate[2] = -1.0f;
 
 	vertex[15].coordinate[0] = 1.0f;
 	vertex[15].coordinate[1] = -1.0f;
-	vertex[15].coordinate[2] = -1.0f;
-
-	vertex[16].coordinate[0] = 1.0f;
-	vertex[16].coordinate[1] = -1.0f;
-	vertex[16].coordinate[2] = 1.0f;
+	vertex[15].coordinate[2] = 1.0f;
 
 
 	/*vertex[12].coordinate[0] = vertices[15];
@@ -241,6 +241,23 @@ void Game::initialize()
 	vertex[15].coordinate[2] = vertices[20];*/
 
 	// right
+	vertex[16].coordinate[0] = 1.0f;
+	vertex[16].coordinate[1] = 1.0f;
+	vertex[16].coordinate[2] = 1.0f;
+
+	vertex[17].coordinate[0] = 1.0f;
+	vertex[17].coordinate[1] = -1.0f;
+	vertex[17].coordinate[2] = 1.0f;
+
+	vertex[18].coordinate[0] = 1.0f;
+	vertex[18].coordinate[1] = -1.0f;
+	vertex[18].coordinate[2] = -1.0f;
+
+	vertex[19].coordinate[0] = 1.0f;
+	vertex[19].coordinate[1] = 1.0f;
+	vertex[19].coordinate[2] = -1.0f;
+
+
 	/*vertex[16].coordinate[0] = vertices[9];
 	vertex[16].coordinate[1] = vertices[10];
 	vertex[16].coordinate[2] = vertices[11];
@@ -258,6 +275,23 @@ void Game::initialize()
 	vertex[19].coordinate[2] = vertices[23];*/
 
 	// left
+	vertex[20].coordinate[0] = -1.0f;
+	vertex[20].coordinate[1] = 1.0f;
+	vertex[20].coordinate[2] = -1.0f;
+
+	vertex[21].coordinate[0] = -1.0f;
+	vertex[21].coordinate[1] = -1.0f;
+	vertex[21].coordinate[2] = -1.0f;
+
+	vertex[22].coordinate[0] = -1.0f;
+	vertex[22].coordinate[1] = -1.0f;
+	vertex[22].coordinate[2] = 1.0f;
+
+	vertex[23].coordinate[0] = -1.0f;
+	vertex[23].coordinate[1] = 1.0f;
+	vertex[23].coordinate[2] = 1.0f;
+
+
 	/*vertex[20].coordinate[0] = vertices[12];
 	vertex[20].coordinate[1] = vertices[13];
 	vertex[20].coordinate[2] = vertices[14];
