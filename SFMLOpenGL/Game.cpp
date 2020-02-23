@@ -77,7 +77,7 @@ GLuint	index,		//Index to draw
 		textureID,	//Texture ID
 		texelID;	// Texel ID
 
-//const std::string filename = "texture.tga";
+//const std::string filename = "custom.tga";
 const std::string filename = "cube.tga";
 
 //const std::string filename = "texture.tga";
@@ -355,45 +355,106 @@ void Game::initialize()
 	/// <summary>
 	/// vertices texture coords
 	/// </summary>
+	 
+	
+	// front
 	vertex[0].texel[0] = 0.25f;
 	vertex[0].texel[1] = 0.5f;
 
 	vertex[1].texel[0] = 0.25f;
 	vertex[1].texel[1] = 0.25f;
 
-	vertex[2].texel[0] = 0.25f;
-	vertex[2].texel[1] = 0.5f;
+	vertex[2].texel[0] = 0.5f;
+	vertex[2].texel[1] = 0.25f;
 
-	vertex[3].texel[0] = 0.0f;
+	vertex[3].texel[0] = 0.5f;
 	vertex[3].texel[1] = 0.5f;
 
-	vertex[4].texel[0] = 0.25f;
-	vertex[4].texel[1] = 0.5f;
 
-	vertex[5].texel[0] = 0.5f;
+	// top
+	vertex[4].texel[0] = 0.25f;
+	vertex[4].texel[1] = 0.75f;
+
+	vertex[5].texel[0] = 0.25f;
 	vertex[5].texel[1] = 0.5f;
 
-	vertex[6].texel[0] = 0.75f;
+	vertex[6].texel[0] = 0.5f;
 	vertex[6].texel[1] = 0.5f;
 
-	vertex[7].texel[0] = 0.25f;
-	vertex[7].texel[1] = 0.25f;
+	vertex[7].texel[0] = 0.5f;
+	vertex[7].texel[1] = 0.75f;
 
 	
+	// back
+	vertex[8].texel[0] = 0.75f;
+	vertex[8].texel[1] = 0.5f;
+
+	vertex[9].texel[0] = 0.75f;
+	vertex[9].texel[1] = 0.25f;
+
+	vertex[10].texel[0] = 1.0f;
+	vertex[10].texel[1] = 0.25f;
+
+	vertex[11].texel[0] = 1.0f;
+	vertex[11].texel[1] = 0.5f;
+
+	// bottom
+	vertex[12].texel[0] = 0.25f;
+	vertex[12].texel[1] = 0.25f;
+
+	vertex[13].texel[0] = 0.25f;
+	vertex[13].texel[1] = 0.0f;
+
+	vertex[14].texel[0] = 0.5f;
+	vertex[14].texel[1] = 0.0f;
+
+	vertex[15].texel[0] = 0.5f;
+	vertex[15].texel[1] = 0.25f;
+
+	// right
+	vertex[16].texel[0] = 0.5f;
+	vertex[16].texel[1] = 0.5f;
+
+	vertex[17].texel[0] = 0.5f;
+	vertex[17].texel[1] = 0.25f;
+
+	vertex[18].texel[0] = 0.75f;
+	vertex[18].texel[1] = 0.25f;
+
+	vertex[19].texel[0] = 0.75f;
+	vertex[19].texel[1] = 0.5f;
+
+	// left
+	vertex[20].texel[0] = 0.0f;
+	vertex[20].texel[1] = 0.5f;
+
+	vertex[21].texel[0] = 0.0f;
+	vertex[21].texel[1] = 0.25f;
+
+	vertex[22].texel[0] = 0.25f;
+	vertex[22].texel[1] = 0.25f;
+
+	vertex[23].texel[0] = 0.5f;
+	vertex[23].texel[1] = 0.25f;
 
 	/// <summary>
 	/// Index of Poly / Triangle to Draw
 	/// </summary>
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
 	triangles[3] = 2;   triangles[4] = 3;   triangles[5] = 0;
+
 	triangles[6] = 2;   triangles[7] = 6;   triangles[8] = 3;
 	triangles[9] = 6;   triangles[10] = 7;   triangles[11] = 3;
+
 	triangles[12] = 7;   triangles[13] = 6;   triangles[14] = 5;
 	triangles[15] = 5;   triangles[16] = 4;   triangles[17] = 7;
+
 	triangles[18] = 5;   triangles[19] = 0;   triangles[20] = 4;
 	triangles[21] = 5;   triangles[22] = 1;   triangles[23] = 0;
+
 	triangles[24] = 1;   triangles[25] = 5;   triangles[26] = 6;
 	triangles[27] = 6;   triangles[28] = 2;   triangles[29] = 1;
+
 	triangles[30] = 4;   triangles[31] = 0;   triangles[32] = 3;
 	triangles[33] = 3;   triangles[34] = 7;   triangles[35] = 4;
 
@@ -413,17 +474,22 @@ void Game::initialize()
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 	/* Vertex Shader which would normally be loaded from an external file */
-	const char* vs_src = "#version 400\n\r"
-		"in vec4 sv_position;"
-		"in vec4 sv_color;"
-		"in vec2 sv_texel;"
-		"out vec4 color;"
-		"out vec2 texel;"
-		"void main() {"
-		"	color = sv_color;"
-		"	texel = sv_texel;"
-		"	gl_Position = sv_position;"
-		"}"; //Vertex Shader Src
+	std::string shaderString = loadShader(vertexLocation);
+	const char* vs_src = shaderString.c_str(); //Vertex Shader Src
+
+
+
+	//const char* vs_src = "#version 400\n\r"
+	//	"in vec4 sv_position;"
+	//	"in vec4 sv_color;"
+	//	"in vec2 sv_texel;"
+	//	"out vec4 color;"
+	//	"out vec2 texel;"
+	//	"void main() {"
+	//	"	color = sv_color;"
+	//	"	texel = sv_texel;"
+	//	"	gl_Position = sv_position;"
+	//	"}"; //Vertex Shader Src
 
 	DEBUG_MSG("Setting Up Vertex Shader");
 
@@ -444,15 +510,19 @@ void Game::initialize()
 	}
 
 	/* Fragment Shader which would normally be loaded from an external file */
-	const char* fs_src = "#version 400\n\r"
-		"uniform sampler2D f_texture;"
-		"in vec4 color;"
-		"in vec2 texel;"
-		"out vec4 fColor;"
-		"void main() {"
-		//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
-		"	fColor = texture(f_texture, texel.st);"
-		"}"; //Fragment Shader Src
+	shaderString = loadShader(fragmentLocation);
+	const char* fs_src = shaderString.c_str();
+	
+	
+	//const char* fs_src = "#version 400\n\r"
+	//	"uniform sampler2D f_texture;"
+	//	"in vec4 color;"
+	//	"in vec2 texel;"
+	//	"out vec4 fColor;"
+	//	"void main() {"
+	//	//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
+	//	"	fColor = texture(f_texture, texel.st);"
+	//	"}"; //Fragment Shader Src
 
 	DEBUG_MSG("Setting Up Fragment Shader");
 
@@ -733,5 +803,54 @@ void Game::controlCube()
 		j++;
 		vertex[i].coordinate[2] = m_points[i].Z;
 		j++;
+	}
+}
+
+std::string Game::loadShader(std::string& t_fileLocation)
+{
+	int index = 0;
+	std::ifstream input;
+
+	input.open(t_fileLocation);
+
+	if (input.is_open())
+	{
+		std::string temp = "";
+		std::string m_string = "";
+
+		while (std::getline(input, temp))
+		{
+
+			for (index = 0; index < temp.length(); index++)
+			{
+				if (temp.at(index) == '\\')
+				{
+					if (temp.at(index + 1) == 'n')
+					{
+						temp += '\n';
+					}
+
+					else if (temp.at(index + 1) == 'r')
+					{
+						temp += '\r';
+					}
+
+					index++;
+				}
+				else
+				{
+					m_string += temp.at(index);
+				}
+			}
+		}
+
+		input.close();
+
+		return m_string;
+	}
+
+	else
+	{
+		std::cout << "error loading in file." << std::endl;
 	}
 }
