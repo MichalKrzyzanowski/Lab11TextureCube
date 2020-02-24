@@ -13,14 +13,7 @@ float vertices[24] =
 	1.0f, 1.0f, -1.0f,
 	-1.0f, 1.0f, -1.0f };
 
-Vector3 m_points[] = { { vertices[0], vertices[1] , vertices[2] },
-						{ vertices[3], vertices[4] , vertices[5] },
-						{ vertices[6], vertices[7] , vertices[8] },
-						{ vertices[9], vertices[10] , vertices[11] },
-						{ vertices[12], vertices[13] , vertices[14] },
-						{ vertices[15], vertices[16] , vertices[17] },
-						{ vertices[18], vertices[19] , vertices[20] },
-						{ vertices[21], vertices[22] , vertices[23] } };
+
 
 Game::Game() : window(sf::VideoMode(800, 600), "OpenGL Cube Texturing")
 {
@@ -92,10 +85,8 @@ unsigned char* img_data;
 void Game::initialize()
 {
 	isRunning = true;
-	for (int i = 0; i < 8; i++)
-	{
-		m_points[i] = Matrix3::Scale3D(20.0) * m_points[i];
-	}
+	
+	int vertIndex = 0;
 
 	glTranslatef(0.0f, 0.0f, -8.0f);
 	glMatrixMode(GL_PROJECTION);
@@ -119,194 +110,145 @@ void Game::initialize()
 	/// 
 	
 	// front
-	vertex[0].coordinate[0] = -1.0f;
-	vertex[0].coordinate[1] = 0.0f;
-	vertex[0].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[1].coordinate[0] = -1.0f;
-	vertex[1].coordinate[1] = -1.0f;
-	vertex[1].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[2].coordinate[0] = 1.0f;
-	vertex[2].coordinate[1] = -1.0f;
-	vertex[2].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[3].coordinate[0] = 1.0f;
-	vertex[3].coordinate[1] = 1.0f;
-	vertex[3].coordinate[2] = 1.0f;
-
-	// top
-	vertex[4].coordinate[0] = -1.0f;
-	vertex[4].coordinate[1] = 1.0f;
-	vertex[4].coordinate[2] = -1.0f;
-
-	vertex[5].coordinate[0] = -1.0f;
-	vertex[5].coordinate[1] = 1.0f;
-	vertex[5].coordinate[2] = 1.0f;
-
-	vertex[6].coordinate[0] = 1.0f;
-	vertex[6].coordinate[1] = 1.0f;
-	vertex[6].coordinate[2] = 1.0f;
-
-	vertex[7].coordinate[0] = 1.0f;
-	vertex[7].coordinate[1] = 1.0f;
-	vertex[7].coordinate[2] = -1.0f;
-
-
-
-	/*vertex[4].coordinate[0] = vertices[12];
-	vertex[4].coordinate[1] = vertices[13];
-	vertex[4].coordinate[2] = vertices[14];
-
-	vertex[5].coordinate[0] = vertices[0];
-	vertex[5].coordinate[1] = vertices[1];
-	vertex[5].coordinate[2] = vertices[2];
-
-	vertex[6].coordinate[0] = vertices[9];
-	vertex[6].coordinate[1] = vertices[10];
-	vertex[6].coordinate[2] = vertices[11];
-
-	vertex[7].coordinate[0] = vertices[21];
-	vertex[7].coordinate[1] = vertices[22];
-	vertex[7].coordinate[2] = vertices[23];*/
-
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
 	// back
-	vertex[8].coordinate[0] = 1.0f;
-	vertex[8].coordinate[1] = 1.0f;
-	vertex[8].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[9].coordinate[0] = 1.0f;
-	vertex[9].coordinate[1] = -1.0f;
-	vertex[9].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[10].coordinate[0] = -1.0f;
-	vertex[10].coordinate[1] = -1.0f;
-	vertex[10].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[11].coordinate[0] = -1.0f;
-	vertex[11].coordinate[1] = 1.0f;
-	vertex[11].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
+	// top
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	/*vertex[8].coordinate[0] = vertices[12];
-	vertex[8].coordinate[1] = vertices[13];
-	vertex[8].coordinate[2] = vertices[14];
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[9].coordinate[0] = vertices[15];
-	vertex[9].coordinate[1] = vertices[16];
-	vertex[9].coordinate[2] = vertices[17];
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[10].coordinate[0] = vertices[18];
-	vertex[10].coordinate[1] = vertices[19];
-	vertex[10].coordinate[2] = vertices[20];
-
-	vertex[11].coordinate[0] = vertices[21];
-	vertex[11].coordinate[1] = vertices[22];
-	vertex[11].coordinate[2] = vertices[23];*/
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
 
 	// bottom
-	vertex[12].coordinate[0] = -1.0f;
-	vertex[12].coordinate[1] = -1.0f;
-	vertex[12].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[13].coordinate[0] = -1.0f;
-	vertex[13].coordinate[1] = -1.0f;
-	vertex[13].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[14].coordinate[0] = 1.0f;
-	vertex[14].coordinate[1] = -1.0f;
-	vertex[14].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[15].coordinate[0] = 1.0f;
-	vertex[15].coordinate[1] = -1.0f;
-	vertex[15].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
 
-	/*vertex[12].coordinate[0] = vertices[15];
-	vertex[12].coordinate[1] = vertices[16];
-	vertex[12].coordinate[2] = vertices[17];
-
-	vertex[13].coordinate[0] = vertices[3];
-	vertex[13].coordinate[1] = vertices[4];
-	vertex[13].coordinate[2] = vertices[5];
-
-	vertex[14].coordinate[0] = vertices[6];
-	vertex[14].coordinate[1] = vertices[7];
-	vertex[14].coordinate[2] = vertices[8];
-
-	vertex[15].coordinate[0] = vertices[18];
-	vertex[15].coordinate[1] = vertices[19];
-	vertex[15].coordinate[2] = vertices[20];*/
 
 	// right
-	vertex[16].coordinate[0] = 1.0f;
-	vertex[16].coordinate[1] = 1.0f;
-	vertex[16].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[17].coordinate[0] = 1.0f;
-	vertex[17].coordinate[1] = -1.0f;
-	vertex[17].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[18].coordinate[0] = 1.0f;
-	vertex[18].coordinate[1] = -1.0f;
-	vertex[18].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[19].coordinate[0] = 1.0f;
-	vertex[19].coordinate[1] = 1.0f;
-	vertex[19].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-
-	/*vertex[16].coordinate[0] = vertices[9];
-	vertex[16].coordinate[1] = vertices[10];
-	vertex[16].coordinate[2] = vertices[11];
-
-	vertex[17].coordinate[0] = vertices[6];
-	vertex[17].coordinate[1] = vertices[7];
-	vertex[17].coordinate[2] = vertices[8];
-
-	vertex[18].coordinate[0] = vertices[18];
-	vertex[18].coordinate[1] = vertices[19];
-	vertex[18].coordinate[2] = vertices[20];
-
-	vertex[19].coordinate[0] = vertices[21];
-	vertex[19].coordinate[1] = vertices[22];
-	vertex[19].coordinate[2] = vertices[23];*/
 
 	// left
-	vertex[20].coordinate[0] = -1.0f;
-	vertex[20].coordinate[1] = 1.0f;
-	vertex[20].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[21].coordinate[0] = -1.0f;
-	vertex[21].coordinate[1] = -1.0f;
-	vertex[21].coordinate[2] = -1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
 
-	vertex[22].coordinate[0] = -1.0f;
-	vertex[22].coordinate[1] = -1.0f;
-	vertex[22].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = -1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
 
-	vertex[23].coordinate[0] = -1.0f;
-	vertex[23].coordinate[1] = 1.0f;
-	vertex[23].coordinate[2] = 1.0f;
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
 
 
-	/*vertex[20].coordinate[0] = vertices[12];
-	vertex[20].coordinate[1] = vertices[13];
-	vertex[20].coordinate[2] = vertices[14];
+	for (int i = 0; i < 24; i++)
+	{
+		m_points[i] = { vertex[i].coordinate[0], vertex[i].coordinate[1] , vertex[i].coordinate[2] };
+	}
 
-	vertex[21].coordinate[0] = vertices[15];
-	vertex[21].coordinate[1] = vertices[16];
-	vertex[21].coordinate[2] = vertices[17];
 
-	vertex[22].coordinate[0] = vertices[3];
-	vertex[22].coordinate[1] = vertices[4];
-	vertex[22].coordinate[2] = vertices[5];
-
-	vertex[23].coordinate[0] = vertices[0];
-	vertex[23].coordinate[1] = vertices[1];
-	vertex[23].coordinate[2] = vertices[2];*/
+	for (int i = 0; i < 8; i++)
+	{
+		m_points[i] = Matrix3::Scale3D(20.0) * m_points[i];
+	}
 
 	/// <summary>
 	/// Vertices colors
@@ -443,20 +385,20 @@ void Game::initialize()
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
 	triangles[3] = 2;   triangles[4] = 3;   triangles[5] = 0;
 
-	triangles[6] = 2;   triangles[7] = 6;   triangles[8] = 3;
-	triangles[9] = 6;   triangles[10] = 7;   triangles[11] = 3;
+	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
+	triangles[9] = 6;   triangles[10] = 7;   triangles[11] = 4;
 
-	triangles[12] = 7;   triangles[13] = 6;   triangles[14] = 5;
-	triangles[15] = 5;   triangles[16] = 4;   triangles[17] = 7;
+	triangles[12] = 7;   triangles[13] = 0;   triangles[14] = 3;
+	triangles[15] = 3;   triangles[16] = 4;   triangles[17] = 7;
 
-	triangles[18] = 5;   triangles[19] = 0;   triangles[20] = 4;
-	triangles[21] = 5;   triangles[22] = 1;   triangles[23] = 0;
+	triangles[18] = 1;   triangles[19] = 6;   triangles[20] = 5;
+	triangles[21] = 5;   triangles[22] = 2;   triangles[23] = 1;
 
-	triangles[24] = 1;   triangles[25] = 5;   triangles[26] = 6;
-	triangles[27] = 6;   triangles[28] = 2;   triangles[29] = 1;
+	triangles[24] = 3;   triangles[25] = 2;   triangles[26] = 5;
+	triangles[27] = 5;   triangles[28] = 4;   triangles[29] = 3;
 
-	triangles[30] = 4;   triangles[31] = 0;   triangles[32] = 3;
-	triangles[33] = 3;   triangles[34] = 7;   triangles[35] = 4;
+	triangles[30] = 7;   triangles[31] = 6;   triangles[32] = 1;
+	triangles[33] = 1;   triangles[34] = 0;   triangles[35] = 7;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);

@@ -40,6 +40,8 @@ private:
 	sf::Time elapsed;
 
 	float rotationAngle = 0.05f;
+
+	Vector3 m_points[24];
 };
 
 #endif
