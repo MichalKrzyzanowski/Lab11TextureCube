@@ -293,7 +293,6 @@ void Game::initialize()
 	vertex[7].color[2] = 0.0f;
 	vertex[7].color[3] = 1.0f;
 
-
 	/// <summary>
 	/// vertices texture coords
 	/// </summary>
@@ -312,6 +311,7 @@ void Game::initialize()
 	vertex[3].texel[0] = 0.5f;
 	vertex[3].texel[1] = 0.5f;
 
+	
 
 	// top
 	vertex[4].texel[0] = 0.25f;
@@ -326,9 +326,8 @@ void Game::initialize()
 	vertex[7].texel[0] = 0.5f;
 	vertex[7].texel[1] = 0.75f;
 
-	
 	// back
-	vertex[8].texel[0] = 0.75f;
+	vertex[8].texel[0] = 1.0f;
 	vertex[8].texel[1] = 0.5f;
 
 	vertex[9].texel[0] = 0.75f;
@@ -339,6 +338,7 @@ void Game::initialize()
 
 	vertex[11].texel[0] = 1.0f;
 	vertex[11].texel[1] = 0.5f;
+	
 
 	// bottom
 	vertex[12].texel[0] = 0.25f;
@@ -420,19 +420,6 @@ void Game::initialize()
 	const char* vs_src = shaderString.c_str(); //Vertex Shader Src
 
 
-
-	//const char* vs_src = "#version 400\n\r"
-	//	"in vec4 sv_position;"
-	//	"in vec4 sv_color;"
-	//	"in vec2 sv_texel;"
-	//	"out vec4 color;"
-	//	"out vec2 texel;"
-	//	"void main() {"
-	//	"	color = sv_color;"
-	//	"	texel = sv_texel;"
-	//	"	gl_Position = sv_position;"
-	//	"}"; //Vertex Shader Src
-
 	DEBUG_MSG("Setting Up Vertex Shader");
 
 	vsid = glCreateShader(GL_VERTEX_SHADER); //Create Shader and set ID
@@ -455,16 +442,6 @@ void Game::initialize()
 	shaderString = loadShader(fragmentLocation);
 	const char* fs_src = shaderString.c_str();
 	
-	
-	//const char* fs_src = "#version 400\n\r"
-	//	"uniform sampler2D f_texture;"
-	//	"in vec4 color;"
-	//	"in vec2 texel;"
-	//	"out vec4 fColor;"
-	//	"void main() {"
-	//	//"	fColor = vec4(0.0f, 1.0f, 0.0f, 1.0f);"
-	//	"	fColor = texture(f_texture, texel.st);"
-	//	"}"; //Fragment Shader Src
 
 	DEBUG_MSG("Setting Up Fragment Shader");
 
@@ -626,7 +603,7 @@ void Game::controlCube()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationX(rotationAngle) * m_points[i];
 		}
@@ -634,7 +611,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationX(-rotationAngle) * m_points[i];
 		}
@@ -642,7 +619,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationY(rotationAngle) * m_points[i];
 		}
@@ -650,7 +627,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationY(-rotationAngle) * m_points[i];
 		}
@@ -658,7 +635,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationZ(rotationAngle) * m_points[i];
 		}
@@ -666,7 +643,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::RotationZ(-rotationAngle) * m_points[i];
 		}
@@ -674,7 +651,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			float temp = m_points[i].Z;
 			m_points[i].Z = 1;
@@ -686,7 +663,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			float temp = m_points[i].Z;
 			m_points[i].Z = 1;
@@ -698,7 +675,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			float temp = m_points[i].Z;
 			m_points[i].Z = 1;
@@ -710,7 +687,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			float temp = m_points[i].Z;
 			m_points[i].Z = 1;
@@ -723,7 +700,7 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::Scale3D(100.05) * m_points[i];
 		}
@@ -731,13 +708,13 @@ void Game::controlCube()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X))
 	{
-		for (int i = 0; i < 8; i++)
+		for (int i = 0; i < 24; i++)
 		{
 			m_points[i] = Matrix3::Scale3D(99.95) * m_points[i];
 		}
 	}
 
-	for (int i = 0, j = 0; i < 8, j < 24; i++)
+	for (int i = 0, j = 0; i < 24, j < 24; i++)
 	{
 		vertex[i].coordinate[0] = m_points[i].X;
 		j++;
