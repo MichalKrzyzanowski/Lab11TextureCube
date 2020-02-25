@@ -130,6 +130,27 @@ void Game::initialize()
 	vertex[vertIndex].coordinate[2] = 1.0f;
 	vertIndex++;
 
+	// top
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
+
+	vertex[vertIndex].coordinate[0] = -1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
+
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = 1.0f;
+	vertIndex++;
+
+	vertex[vertIndex].coordinate[0] = 1.0f;
+	vertex[vertIndex].coordinate[1] = 1.0f;
+	vertex[vertIndex].coordinate[2] = -1.0f;
+	vertIndex++;
+
 	// back
 	vertex[vertIndex].coordinate[0] = 1.0f;
 	vertex[vertIndex].coordinate[1] = 1.0f;
@@ -151,26 +172,7 @@ void Game::initialize()
 	vertex[vertIndex].coordinate[2] = -1.0f;
 	vertIndex++;
 
-	// top
-	vertex[vertIndex].coordinate[0] = -1.0f;
-	vertex[vertIndex].coordinate[1] = 1.0f;
-	vertex[vertIndex].coordinate[2] = -1.0f;
-	vertIndex++;
-
-	vertex[vertIndex].coordinate[0] = -1.0f;
-	vertex[vertIndex].coordinate[1] = 1.0f;
-	vertex[vertIndex].coordinate[2] = 1.0f;
-	vertIndex++;
-
-	vertex[vertIndex].coordinate[0] = 1.0f;
-	vertex[vertIndex].coordinate[1] = 1.0f;
-	vertex[vertIndex].coordinate[2] = 1.0f;
-	vertIndex++;
-
-	vertex[vertIndex].coordinate[0] = 1.0f;
-	vertex[vertIndex].coordinate[1] = 1.0f;
-	vertex[vertIndex].coordinate[2] = -1.0f;
-	vertIndex++;
+	
 
 
 	// bottom
@@ -245,7 +247,7 @@ void Game::initialize()
 	}
 
 
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 24; i++)
 	{
 		m_points[i] = Matrix3::Scale3D(20.0) * m_points[i];
 	}
@@ -311,8 +313,9 @@ void Game::initialize()
 	vertex[3].texel[0] = 0.5f;
 	vertex[3].texel[1] = 0.5f;
 
-	
 
+	
+	
 	// top
 	vertex[4].texel[0] = 0.25f;
 	vertex[4].texel[1] = 0.75f;
@@ -327,7 +330,7 @@ void Game::initialize()
 	vertex[7].texel[1] = 0.75f;
 
 	// back
-	vertex[8].texel[0] = 1.0f;
+	vertex[8].texel[0] = 0.75f;
 	vertex[8].texel[1] = 0.5f;
 
 	vertex[9].texel[0] = 0.75f;
@@ -338,9 +341,8 @@ void Game::initialize()
 
 	vertex[11].texel[0] = 1.0f;
 	vertex[11].texel[1] = 0.5f;
-	
 
-	// bottom
+	//// bottom
 	vertex[12].texel[0] = 0.25f;
 	vertex[12].texel[1] = 0.25f;
 
@@ -376,8 +378,8 @@ void Game::initialize()
 	vertex[22].texel[0] = 0.25f;
 	vertex[22].texel[1] = 0.25f;
 
-	vertex[23].texel[0] = 0.5f;
-	vertex[23].texel[1] = 0.25f;
+	vertex[23].texel[0] = 0.25f;
+	vertex[23].texel[1] = 0.5f;
 
 	/// <summary>
 	/// Index of Poly / Triangle to Draw
@@ -388,17 +390,17 @@ void Game::initialize()
 	triangles[6] = 4;   triangles[7] = 5;   triangles[8] = 6;
 	triangles[9] = 6;   triangles[10] = 7;   triangles[11] = 4;
 
-	triangles[12] = 7;   triangles[13] = 0;   triangles[14] = 3;
-	triangles[15] = 3;   triangles[16] = 4;   triangles[17] = 7;
+	triangles[12] = 8;   triangles[13] = 9;   triangles[14] = 10;
+	triangles[15] = 10;   triangles[16] = 11;   triangles[17] = 8;
 
-	triangles[18] = 1;   triangles[19] = 6;   triangles[20] = 5;
-	triangles[21] = 5;   triangles[22] = 2;   triangles[23] = 1;
+	triangles[18] = 12;   triangles[19] = 13;   triangles[20] = 14;
+	triangles[21] = 14;   triangles[22] = 15;   triangles[23] = 12;
 
-	triangles[24] = 3;   triangles[25] = 2;   triangles[26] = 5;
-	triangles[27] = 5;   triangles[28] = 4;   triangles[29] = 3;
+	triangles[24] = 16;   triangles[25] = 17;   triangles[26] = 18;
+	triangles[27] = 18;   triangles[28] = 19;   triangles[29] = 16;
 
-	triangles[30] = 7;   triangles[31] = 6;   triangles[32] = 1;
-	triangles[33] = 1;   triangles[34] = 0;   triangles[35] = 7;
+	triangles[30] = 20;   triangles[31] = 21;   triangles[32] = 22;
+	triangles[33] = 22;   triangles[34] = 23;   triangles[35] = 20;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
@@ -714,7 +716,7 @@ void Game::controlCube()
 		}
 	}
 
-	for (int i = 0, j = 0; i < 24, j < 24; i++)
+	for (int i = 0, j = 0; i < 24, j < 72; i++)
 	{
 		vertex[i].coordinate[0] = m_points[i].X;
 		j++;
