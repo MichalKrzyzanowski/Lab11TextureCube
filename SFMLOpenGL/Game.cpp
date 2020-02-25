@@ -70,8 +70,8 @@ GLuint	index,		//Index to draw
 		textureID,	//Texture ID
 		texelID;	// Texel ID
 
-//const std::string filename = "custom.tga";
-const std::string filename = "cube.tga";
+const std::string filename = "custom.tga";
+//const std::string filename = "cube.tga";
 
 //const std::string filename = "texture.tga";
 
